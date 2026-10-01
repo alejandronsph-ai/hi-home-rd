@@ -1,4 +1,5 @@
 "use client";
+import { assetPath } from "@/lib/assets";
 import { memo, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
@@ -75,7 +76,7 @@ function CanvasEngine({
       if (cached) return Promise.resolve(cached);
       const pending = blobRequests.get(index);
       if (pending) return pending;
-      const request = fetch(urls[index], {
+      const request = fetch(assetPath(urls[index]), {
         signal: controller.signal,
         cache: "force-cache",
       })
@@ -265,7 +266,7 @@ function CanvasEngine({
           if (!validFrames([...frames])) throw new Error("Invalid frame list");
           urls = frames;
         } else if (manifestUrl) {
-          const response = await fetch(manifestUrl, {
+          const response = await fetch(assetPath(manifestUrl), {
             signal: controller.signal,
           });
           if (!response.ok) throw new Error("Manifest unavailable");
@@ -367,7 +368,7 @@ function CanvasEngine({
   return (
     <div className="scrolly-canvas" data-mode={mode}>
       <Image
-        src={poster}
+        src={assetPath(poster)}
         preload={preload}
         quality={90}
         alt=""

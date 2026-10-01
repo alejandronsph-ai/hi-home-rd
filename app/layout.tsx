@@ -1,3 +1,5 @@
+import { assetPath } from "@/lib/assets";
+import type { CSSProperties } from "react";
 import type { Metadata, Viewport } from "next";
 import { Syne, Manrope } from "next/font/google";
 import "lenis/dist/lenis.css";
@@ -13,7 +15,7 @@ const sans = Manrope({
   display: "swap",
 });
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hihomerd.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_PATH ? "https://alejandronsph-ai.github.io" : "https://hihomerd.com"),
   title: "HI HOME RD | Tu nuevo hogar en el Caribe",
   description:
     "Compra, venta y administración de propiedades en República Dominicana. Conoce el catálogo de HI HOME RD.",
@@ -25,7 +27,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/villa.webp",
+        url: assetPath("/images/villa.webp"),
         width: 1024,
         height: 681,
         alt: "Propiedad de cinco habitaciones publicada por HI HOME RD",
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: { card: "summary_large_image" },
-  robots: { index: true, follow: true },
+  robots: { index: !process.env.NEXT_PUBLIC_BASE_PATH, follow: true },
 };
 export const viewport: Viewport = {
   themeColor: "#101416",
@@ -45,7 +47,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className={`${display.variable} ${sans.variable}`}>
-      <body>{children}</body>
+      <body style={{ "--destination-backdrop": `url("${assetPath("/images/cap-cana.webp")}")` } as CSSProperties}>{children}</body>
     </html>
   );
 }

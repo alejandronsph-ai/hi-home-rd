@@ -9,7 +9,7 @@ npm ci
 npm run dev
 ```
 
-Para producción: `npm run build` y `npm start`. Comprobaciones: `npm test` y `npm run typecheck`.
+Para generar la versión estática: `npm run build`. Comprobaciones: `npm test` y `npm run typecheck`.
 
 ## Presentación
 
@@ -31,4 +31,6 @@ Las propiedades, fotografías y marca pertenecen a sus respectivos titulares. Es
 
 Copiar `.env.example` solo si se necesita cambiar el enlace de Calendly o el manifiesto de fotogramas. Las variables son opcionales; no se requieren credenciales para ejecutar la web.
 
-El proyecto usa una ruta de servidor (`/api/brochure`) y optimización de imágenes de Next.js. Debe alojarse en un servicio compatible con Next.js, como Vercel, para conservar esas funciones.
+La presentación está publicada en https://alejandronsph-ai.github.io/hi-home-rd/.
+
+`npm run build:pages` genera `out/` con el prefijo `/hi-home-rd`. Publicar el contenido de esa carpeta en la rama `gh-pages`, incluyendo un archivo `.nojekyll`. Las fichas se generan en el navegador y las imágenes se sirven como archivos estáticos; no se necesita un servidor Next.js ni una cuenta de Vercel.

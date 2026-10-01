@@ -2668,7 +2668,7 @@ body::before {
   pointer-events: none;
   background:
     linear-gradient(rgba(16, 24, 28, 0.72), rgba(16, 24, 28, 0.86)),
-    url("/images/cap-cana.webp") center / cover;
+    var(--destination-backdrop) center / cover;
 }
 :root {
   --glass-dark: rgba(17, 30, 36, 0.58);

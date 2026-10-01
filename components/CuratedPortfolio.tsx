@@ -1,5 +1,7 @@
 "use client";
 import { useState, type PointerEvent } from "react";
+import { assetPath } from "@/lib/assets";
+import { downloadBrochure } from "@/lib/brochure";
 import Image from "next/image";
 import {
   motion,
@@ -49,7 +51,7 @@ function PropertyCard({ property }: { property: Property }) {
         aria-label={`${t.inquire}: ${t[property.name]}`}
       >
         <Image
-          src={property.image}
+          src={assetPath(property.image)}
           alt={t[property.name]}
           fill
           sizes="(max-width: 700px) 100vw, 60vw"
@@ -92,15 +94,15 @@ function PropertyCard({ property }: { property: Property }) {
             )}
           </strong>
           {property.type !== "search" ? (
-            <a
+            <button
+              type="button"
               className="brochure-link"
-              href={`/api/brochure?id=${property.id}&locale=${locale}&currency=${currency}`}
-              download
+              onClick={() => downloadBrochure(property, locale, currency)}
               aria-label={`${t.brochure}: ${t[property.name]}`}
             >
               <ArrowDown size={17} />
               <span>{t.brochure}</span>
-            </a>
+            </button>
           ) : (
             <a
               className="brochure-link"

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { assetPath } from "@/lib/assets";
 import Image from "next/image";
 import {
   ArrowUpRight,
@@ -71,7 +72,7 @@ export default function Flagship() {
         <a className="wordmark" href="#home" aria-label="HI HOME RD">
           <Image
             className="brand-logo"
-            src="/brand/hi-home-logo-4k.png"
+            src={assetPath("/brand/hi-home-logo-4k.png")}
             alt="HI HOME Real Estate"
             width={3072}
             height={3840}
@@ -173,11 +174,11 @@ export default function Flagship() {
         >
           <div className="destination-photo">
             <Image
-              src={
+              src={assetPath(
                 destination === 1
                   ? "/images/cap-cana.webp"
                   : "/images/corales.webp"
-              }
+              )}
               alt=""
               fill
               sizes="(max-width: 700px) 100vw, 50vw"
@@ -271,7 +272,7 @@ export default function Flagship() {
           <a className="wordmark" href="#home" aria-label="HI HOME RD">
             <Image
               className="brand-logo"
-              src="/brand/hi-home-logo-4k.png"
+              src={assetPath("/brand/hi-home-logo-4k.png")}
               alt="HI HOME Real Estate"
               width={3072}
               height={3840}
